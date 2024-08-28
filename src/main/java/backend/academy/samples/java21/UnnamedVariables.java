@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * <a href="https://docs.oracle.com/en/java/javase/22/language/unnamed-variables-and-patterns.html">Feature documentation</a>
+ */
 public class UnnamedVariables {
 
     public static void main(String[] args) {

@@ -5,6 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+/**
+ * <a href="https://docs.oracle.com/en/java/javase/22/core/creating-sequenced-collections-sets-and-maps.html">Feature documentation</a>
+ */
 public class SequencedCollections {
 
     public static void main(String[] args) {

@@ -98,6 +98,11 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.gaul</groupId>
+            <artifactId>modernizer-maven-annotations</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
         </dependency>
@@ -252,6 +257,12 @@
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-annotations</artifactId>
                 <version>${spotbugs.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>org.gaul</groupId>
+                <artifactId>modernizer-maven-annotations</artifactId>
+                <version>${modernizer-maven-plugin.version}</version>
                 <optional>true</optional>
             </dependency>
 

@@ -1,5 +1,9 @@
 package backend.academy.samples.java21;
 
+/**
+ * <a href="https://docs.oracle.com/en/java/javase/22/language/pattern-matching.html">Feature documentation</a>
+ * <a href="https://docs.oracle.com/en/java/javase/22/language/switch-expressions.html">More on switch expressions</a>
+ */
 public class SwitchPatternMatching {
     static double calcArea(Shape shape) {
         return switch (shape) {
@@ -84,7 +88,10 @@ public class SwitchPatternMatching {
             case Long l -> String.format("long %d", l);
             case Double d -> String.format("double %f", d);
             case String s -> String.format("String %s", s);
-            default -> obj.toString();
+            default -> {
+                System.out.println("do something else");
+                yield obj.toString();
+            }
         };
     }
 

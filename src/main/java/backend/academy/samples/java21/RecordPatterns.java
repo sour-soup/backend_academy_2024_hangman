@@ -1,5 +1,8 @@
 package backend.academy.samples.java21;
 
+/**
+ * <a href="https://docs.oracle.com/en/java/javase/22/language/records.html">Feature documentation</a>
+ */
 public class RecordPatterns {
 
     public static void main(String[] args) {

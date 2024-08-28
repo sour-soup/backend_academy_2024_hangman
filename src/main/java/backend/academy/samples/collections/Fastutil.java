@@ -32,6 +32,11 @@ import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
 import lombok.extern.log4j.Log4j2;
 
+/**
+ * fastutil extends a collection framework with performance-optimized data structures.
+ * <p>
+ * <a href="https://fastutil.di.unimi.it/docs/">Library documentation</a>
+ */
 @Log4j2
 public class Fastutil {
     public static void main(String[] args) throws IOException {

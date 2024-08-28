@@ -5,6 +5,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.jspecify.annotations.Nullable;
 
+/**
+ * Lombok is a compile-time code generator that helps you to avoid boilerplate code
+ * (getters, setters, constructors and many more).
+ * <p>
+ * <a href="https://projectlombok.org/">Project website</a>
+ */
 @Log4j2
 @RequiredArgsConstructor
 public class CalcService {
