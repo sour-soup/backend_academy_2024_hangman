@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 public class DictionaryImpl implements Dictionary {
     private static final String LOAD_ERROR_MESSAGE = "Failed to load dictionary data: ";
 
-    Map<Long, Category> categories;
-    Map<Long, Word> words;
+    private Map<Long, Category> categories;
+    private Map<Long, Word> words;
 
     public DictionaryImpl() {
         categories = new HashMap<>();
