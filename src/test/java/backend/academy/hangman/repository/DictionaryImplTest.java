@@ -23,7 +23,7 @@ class DictionaryImplTest {
     }
 
     @Test
-    void loadData_ShouldLoadDictionaryDataCorrectly() throws DictionaryLoadingException {
+    void loadDictionaryData_ShouldLoadDictionaryDataCorrectly() throws DictionaryLoadingException {
         // Act
         dictionary.loadDictionaryData(getExampleInputStream());
 
@@ -36,7 +36,7 @@ class DictionaryImplTest {
     }
 
     @Test
-    void loadDictionaryData_ShouldThrowExceptionWhenJsonIsInvalid() {
+    void loadDictionaryData_ShouldThrowException_WhenJsonIsInvalid() {
         // Arrange
         String invalidJsonData = "baobab";
         InputStream inputStream = new ByteArrayInputStream(invalidJsonData.getBytes());
@@ -47,7 +47,7 @@ class DictionaryImplTest {
     }
 
     @Test
-    void loadDictionaryDataIsNull() {
+    void loadDictionaryData_ShouldThrowException_WhenInputStreamIsNull() {
         // Arrange (Given)
         InputStream inputStream = InputStream.nullInputStream();
 
