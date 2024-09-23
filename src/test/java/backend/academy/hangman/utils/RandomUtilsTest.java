@@ -22,7 +22,7 @@ class RandomUtilsTest {
     }
 
     @Test
-    public void getRandomElement_ShouldThrowEmptyCollectionException_WhenCollectionIsEmpty() {
+    void getRandomElement_ShouldThrowEmptyCollectionException_WhenCollectionIsEmpty() {
         // Arrange
         List<String> emptyList = List.of();
 
@@ -32,7 +32,7 @@ class RandomUtilsTest {
     }
 
     @Test
-    public void getRandomElements_ReturnsCorrectList(){
+    void getRandomElements_ReturnsCorrectList(){
         // Arrange
         List<Integer> collection = List.of(1,2,3,4,5);
         int n = 3;
@@ -46,7 +46,7 @@ class RandomUtilsTest {
     }
 
     @Test
-    public void getRandomElements_ReturnsAllElements_WhenNEqualsCollectionSize(){
+    void getRandomElements_ReturnsAllElements_WhenNEqualsCollectionSize(){
         // Arrange
         List<Integer> collection = List.of(1,2,3,4,5);
         int n = collection.size();
@@ -59,7 +59,7 @@ class RandomUtilsTest {
     }
 
     @Test
-    public void getRandomElements_ReturnsEmptyList_WhenNIsZero(){
+    void getRandomElements_ReturnsEmptyList_WhenNIsZero(){
         // Arrange
         List<Integer> collection = List.of(1,2,3,4,5);
         int n = 0;
@@ -72,7 +72,7 @@ class RandomUtilsTest {
     }
 
     @Test
-    public void getRandomElements_ReturnsEmptyList_WhenCollectionIsEmptyAndNIsZero(){
+    void getRandomElements_ReturnsEmptyList_WhenCollectionIsEmptyAndNIsZero(){
         // Arrange
         List<Integer> collection = List.of();
         int n = 0;
@@ -85,7 +85,7 @@ class RandomUtilsTest {
     }
 
     @Test
-    public  void getRandomElements_ThrowsException_WhenNIsNegative(){
+    void getRandomElements_ThrowsException_WhenNIsNegative(){
         List<Integer> collection = List.of(1,2,3,4,5);
         int n = -1;
 
@@ -96,7 +96,7 @@ class RandomUtilsTest {
     }
 
     @Test
-    public  void getRandomElements_ThrowsException_WhenNExceedsCollectionSize(){
+    void getRandomElements_ThrowsException_WhenNExceedsCollectionSize(){
         List<Integer> collection = List.of(1,2,3,4,5);
         int n = collection.size() + 1;
 
@@ -105,6 +105,4 @@ class RandomUtilsTest {
             .isInstanceOf(InvalidCollectionRequestException.class)
             .hasMessage("Invalid number of elements requested");
     }
-
-
 }
