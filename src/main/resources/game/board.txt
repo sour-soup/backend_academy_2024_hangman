@@ -1,0 +1,31 @@
+    ┌─────────────────────────────┐
+    │#############################│
+    │###┌───────────────┬──┬──────┘
+    │###│               │##│
+    │###│               │##│
+    │###│               │##│ XXXXXX
+    │###│                #  XXXXXXXX
+    │###│                  XXXXXXXXX
+    │###│               XX XXXXXXXXX
+    │###│            X  XX  XXXXXXX
+    │###│           XX  XXX  XXXX
+    │###│          XXX  XXXX     XXX
+    │###│         XXX   XXXXXXXX  XXX
+    │###│        XXX    XXXXXXXX   XXXX
+    │###│       XXX     XXXXXXXX     XXX
+    │###│      XXX      XXXXXXXX      XXX
+    │###│               XXXXXXXX
+    │###│                XXXXXX
+    │###│             XX        XX
+    │###│            XXX        XXX
+    │###│           XXXX        XXXX
+    │###│          XXXXX        XXXXXX
+    │###│         XXXXXX        XXXXXXX
+    │###│
+┌───┘###└─────────────────┐
+│XXXXXXXXXXXXXXXXXXXXXXXXX│
+│XXXXXXXXXXXXXXXXXXXXXXXXX│
+│XXXXXXXXXXXXXXXXXXXXXXXXX│
+│XXXXXXXXXXXXXXXXXXXXXXXXX│
+│XXXXXXXXXXXXXXXXXXXXXXXXX│
+└─────────────────────────┘
