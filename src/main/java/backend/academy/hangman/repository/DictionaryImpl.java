@@ -26,7 +26,7 @@ public class DictionaryImpl implements Dictionary {
 
     public void loadDictionaryDefaultData() {
         loadDictionaryData(getClass().getClassLoader()
-            .getResourceAsStream("repository/dictionary.json"));
+            .getResourceAsStream("hangman/dictionary.json"));
     }
 
     public void loadDictionaryData(InputStream inputStream) {

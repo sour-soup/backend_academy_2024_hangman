@@ -30,7 +30,7 @@ public class Board {
     }
 
     public void loadDefaultAsciiArt() {
-        try (InputStream defaultArtStream = getClass().getClassLoader().getResourceAsStream("game/board.txt")) {
+        try (InputStream defaultArtStream = getClass().getClassLoader().getResourceAsStream("hangman/board.txt")) {
             loadAsciiArt(Objects.requireNonNull(defaultArtStream));
         } catch (IOException e) {
             throw new ResourceLoadingException(LOAD_ERROR_MESSAGE + e.getMessage(), e);
