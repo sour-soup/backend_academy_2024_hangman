@@ -1,6 +1,6 @@
 package backend.academy.hangman.repository;
 
-import backend.academy.hangman.exception.DictionaryLoadingException;
+import backend.academy.hangman.exception.ResourceLoadingException;
 import backend.academy.hangman.model.Category;
 import backend.academy.hangman.model.Word;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,13 +17,13 @@ class DictionaryImplTest {
     private DictionaryImpl dictionary;
 
     @BeforeEach
-    void setUp() throws DictionaryLoadingException {
+    void setUp() throws ResourceLoadingException {
         dictionary = new DictionaryImpl();
         dictionary.loadDictionaryData(getExampleInputStream());
     }
 
     @Test
-    void loadDictionaryData_ShouldLoadDictionaryDataCorrectly() throws DictionaryLoadingException {
+    void loadDictionaryData_ShouldLoadDictionaryDataCorrectly() throws ResourceLoadingException {
         // Act
         dictionary.loadDictionaryData(getExampleInputStream());
 
@@ -43,7 +43,7 @@ class DictionaryImplTest {
 
         // Act & Assert
         assertThatThrownBy(() -> dictionary.loadDictionaryData(inputStream))
-            .isInstanceOf(DictionaryLoadingException.class);
+            .isInstanceOf(ResourceLoadingException.class);
     }
 
     @Test
@@ -53,7 +53,7 @@ class DictionaryImplTest {
 
         // Act & Assert (When & Then)
         assertThatThrownBy(() -> dictionary.loadDictionaryData(inputStream))
-            .isInstanceOf(DictionaryLoadingException.class);
+            .isInstanceOf(ResourceLoadingException.class);
     }
 
     @Test

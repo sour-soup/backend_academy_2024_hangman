@@ -1,6 +1,6 @@
 package backend.academy.hangman.repository;
 
-import backend.academy.hangman.exception.DictionaryLoadingException;
+import backend.academy.hangman.exception.ResourceLoadingException;
 import backend.academy.hangman.model.Category;
 import backend.academy.hangman.model.Word;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -46,7 +46,7 @@ public class DictionaryImpl implements Dictionary {
                     wordData.hint()))
                 .collect(Collectors.toMap(Word::id, Function.identity()));
         } catch (IOException e) {
-            throw new DictionaryLoadingException(LOAD_ERROR_MESSAGE + e.getMessage(), e);
+            throw new ResourceLoadingException(LOAD_ERROR_MESSAGE + e.getMessage(), e);
         }
     }
 

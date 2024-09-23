@@ -1,7 +1,7 @@
 package backend.academy.hangman.service;
 
 import backend.academy.hangman.config.DependencyResolver;
-import backend.academy.hangman.exception.EmptyCollectionException;
+import backend.academy.hangman.exception.InvalidCollectionRequestException;
 import backend.academy.hangman.model.Category;
 import backend.academy.hangman.model.Word;
 import backend.academy.hangman.repository.Dictionary;
@@ -97,11 +97,11 @@ class DictionaryServiceImplTest {
         when(mockDictionary.getWordsByCategory(category)).thenReturn(List.of());
         try (var randomUtilsMock = mockStatic(RandomUtils.class)) {
             randomUtilsMock.when(RandomUtils.getRandomElement(List.of()))
-                .thenThrow(new EmptyCollectionException("Collection must not be null or empty"));
+                .thenThrow(new InvalidCollectionRequestException("Collection must not be null or empty"));
 
             // Act & Assert
             assertThatThrownBy(() -> dictionaryService.getRandomWordByCategory(category))
-                .isInstanceOf(EmptyCollectionException.class);
+                .isInstanceOf(InvalidCollectionRequestException.class);
             verify(mockDictionary).getWordsByCategory(category);
         }
     }
