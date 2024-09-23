@@ -33,9 +33,16 @@ public class DependencyResolver {
         return newInstance;
     }
 
-    private static final DependencyResolver INSTANCE = new DependencyResolver();
+    public void clear() {
+        suppliers.clear();
+        instances.clear();
+    }
 
     public static DependencyResolver getInstance() {
-        return INSTANCE;
+        return Holder.INSTANCE;
+    }
+
+    private static class Holder {
+        private static final DependencyResolver INSTANCE = new DependencyResolver();
     }
 }
