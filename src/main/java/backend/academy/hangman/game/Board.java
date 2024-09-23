@@ -52,14 +52,13 @@ public class Board {
             .collect(Collectors.joining());
     }
 
-    public void go(long currentAttempts, long maxAttempts) {
+    public void updateStatus(long currentAttempts, long maxAttempts) {
         long totalSymbols = countNonSpaceSymbols();
         long activeSymbolsCount = IntStream.range(0, activeSymbols.length).filter(i -> activeSymbols[i]).count();
 
         double percentage = START_PART + (double) currentAttempts / maxAttempts * (1 - START_PART);
         long expectedActiveSymbols = currentAttempts == maxAttempts ? totalSymbols : (long) (totalSymbols * percentage);
         long symbolsToActivate = expectedActiveSymbols - activeSymbolsCount;
-
         activateSymbols(symbolsToActivate);
     }
 

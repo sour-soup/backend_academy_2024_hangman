@@ -60,12 +60,12 @@ class BoardTest {
     }
 
     @Test
-    void go_ShouldActivateAllSymbols_AfterMaxAttempts() {
+    void updateStatus_ShouldActivateAllSymbols_AfterMaxAttempts() {
         String art = "ART";
         board.loadAsciiArt(art);
 
         // Act
-        board.go(5, 5);
+        board.updateStatus(5, 5);
 
         // Assert
         assertThat(board.getAsciiArt()).isEqualTo(art);
