@@ -1,5 +1,7 @@
 package backend.academy.hangman.game;
 
+import backend.academy.hangman.config.DependencyResolver;
+import backend.academy.hangman.config.GameConfig;
 import backend.academy.hangman.exception.ResourceLoadingException;
 import backend.academy.hangman.utils.RandomUtils;
 import java.io.IOException;
@@ -12,17 +14,20 @@ import java.util.stream.IntStream;
 
 public class Board {
     private static final String LOAD_ERROR_MESSAGE = "Failed to load board data: ";
-    private static final double START_PART = 0.1;
+    private final double startPart;
+    private final long maxAttempts;
 
     private String asciiArt;
     private boolean[] activeSymbols;
 
-    public Board() {
-        this("");
+    public Board(long maxAttempts) {
+        this("", maxAttempts);
     }
 
-    public Board(String asciiArt) {
+    public Board(String asciiArt, long maxAttempts) {
         initializeAsciiArt(asciiArt);
+        this.maxAttempts = maxAttempts;
+        startPart = DependencyResolver.getInstance().resolve(GameConfig.class).boardStartPart();
     }
 
     public void loadAsciiArt(String asciiArt) {
@@ -52,25 +57,19 @@ public class Board {
             .collect(Collectors.joining());
     }
 
-    public void updateStatus(long currentAttempts, long maxAttempts) {
+    public void addAttempt() {
         long totalSymbols = countNonSpaceSymbols();
-        long activeSymbolsCount = IntStream.range(0, activeSymbols.length).filter(i -> activeSymbols[i]).count();
-
-        double percentage = START_PART + (double) currentAttempts / maxAttempts * (1 - START_PART);
-        long expectedActiveSymbols = currentAttempts == maxAttempts ? totalSymbols : (long) (totalSymbols * percentage);
-        long symbolsToActivate = expectedActiveSymbols - activeSymbolsCount;
+        long activeSymbolsCount = IntStream.range(0, activeSymbols.length)
+            .filter(i -> activeSymbols[i]).count();
+        long symbolsToActivate = (long) Math.min(totalSymbols - activeSymbolsCount,
+            Math.ceil(totalSymbols * (1 - startPart) / maxAttempts));
         activateSymbols(symbolsToActivate);
-    }
-
-    public void clear() {
-        activeSymbols = new boolean[asciiArt.length()];
-        activateSymbols((long) (countNonSpaceSymbols() * START_PART));
     }
 
     private void initializeAsciiArt(String asciiArt) {
         this.asciiArt = asciiArt;
         this.activeSymbols = new boolean[asciiArt.length()];
-        activateSymbols((long) (countNonSpaceSymbols() * START_PART));
+        activateSymbols((long) (countNonSpaceSymbols() * startPart));
     }
 
     private long countNonSpaceSymbols() {

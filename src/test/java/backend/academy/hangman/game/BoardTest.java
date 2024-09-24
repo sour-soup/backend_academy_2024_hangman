@@ -1,9 +1,12 @@
 package backend.academy.hangman.game;
 
+import backend.academy.hangman.config.DependencyResolver;
+import backend.academy.hangman.config.GameConfig;
 import backend.academy.hangman.exception.ResourceLoadingException;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -16,7 +19,12 @@ class BoardTest {
 
     @BeforeEach
     void setUp() {
-        board = new Board();
+        DependencyResolver.getInstance().clear();
+
+        DependencyResolver.getInstance()
+            .register(GameConfig.class, () -> ConfigFactory.create(GameConfig.class));
+
+        board = new Board(1);
     }
 
     @Test
@@ -60,12 +68,12 @@ class BoardTest {
     }
 
     @Test
-    void updateStatus_ShouldActivateAllSymbols_AfterMaxAttempts() {
+    void addAttempt_ShouldActivateAllSymbols_AfterMaxAttempts() {
         String art = "ART";
         board.loadAsciiArt(art);
 
         // Act
-        board.updateStatus(5, 5);
+        board.addAttempt();
 
         // Assert
         assertThat(board.getAsciiArt()).isEqualTo(art);
