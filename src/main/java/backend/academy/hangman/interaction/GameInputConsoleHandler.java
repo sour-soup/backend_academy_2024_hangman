@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class GameInputConsoleHandler implements GameInputHandler {
     private final BufferedReader bufferedReader;
@@ -13,7 +14,7 @@ public class GameInputConsoleHandler implements GameInputHandler {
     public GameInputConsoleHandler() {
         InputStream inputStream = DependencyResolver.getInstance()
             .resolve(InputStream.class);
-        this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
     }
 
     @Override
@@ -28,7 +29,7 @@ public class GameInputConsoleHandler implements GameInputHandler {
     @Override
     public Integer getInteger() {
         try {
-            return Integer.parseInt(getString());
+            return Integer.valueOf(getString());
         } catch (NumberFormatException e) {
             throw new GameInputException("Error parsing integer input", e);
         }

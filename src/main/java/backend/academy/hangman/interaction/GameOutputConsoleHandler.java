@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 public class GameOutputConsoleHandler implements GameOutputHandler {
     private final BufferedWriter bufferedWriter;
@@ -13,7 +14,7 @@ public class GameOutputConsoleHandler implements GameOutputHandler {
     public GameOutputConsoleHandler() {
         OutputStream outputStream = DependencyResolver.getInstance()
             .resolve(OutputStream.class);
-        this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+        this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,  StandardCharsets.UTF_8));
     }
 
     @Override
