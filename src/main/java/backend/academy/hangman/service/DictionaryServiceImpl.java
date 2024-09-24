@@ -8,21 +8,24 @@ import backend.academy.hangman.utils.RandomUtils;
 import java.util.List;
 
 public class DictionaryServiceImpl implements DictionaryService {
+    private final Dictionary dictionary;
+
+    public DictionaryServiceImpl() {
+        dictionary = DependencyResolver.getInstance().resolve(Dictionary.class);
+    }
+
     @Override
     public List<Category> getAllCategories() {
-        Dictionary dictionary = DependencyResolver.getInstance().resolve(Dictionary.class);
         return dictionary.getAllCategories();
     }
 
     @Override
     public Word getRandomWord() {
-        Dictionary dictionary = DependencyResolver.getInstance().resolve(Dictionary.class);
         return RandomUtils.getRandomElement(dictionary.getAllWords());
     }
 
     @Override
     public Word getRandomWordByCategory(Category category) {
-        Dictionary dictionary = DependencyResolver.getInstance().resolve(Dictionary.class);
         return RandomUtils.getRandomElement(dictionary.getWordsByCategory(category));
     }
 }

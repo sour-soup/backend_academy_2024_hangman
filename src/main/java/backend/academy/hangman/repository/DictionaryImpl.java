@@ -24,11 +24,6 @@ public class DictionaryImpl implements Dictionary {
         words = new HashMap<>();
     }
 
-    public void loadDictionaryDefaultData() {
-        loadDictionaryData(getClass().getClassLoader()
-            .getResourceAsStream("hangman/dictionary.json"));
-    }
-
     public void loadDictionaryData(InputStream inputStream) {
         ObjectMapper objectMapper = new ObjectMapper();
 
