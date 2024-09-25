@@ -20,7 +20,6 @@ public class HangmanGame {
             Optional<GameParameters> gameParametersOptional = gameMenu.run();
 
             if (gameParametersOptional.isEmpty()) {
-                gameOutputHandler.printMessage(EXITING_THE_GAME);
                 break;
             }
 
