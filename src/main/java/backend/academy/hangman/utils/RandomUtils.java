@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-public class RandomUtils {
+public final class RandomUtils {
     private static final SecureRandom RANDOM = new SecureRandom();
 
     private RandomUtils() {

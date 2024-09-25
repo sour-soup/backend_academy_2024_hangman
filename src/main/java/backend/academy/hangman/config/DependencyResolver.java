@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class DependencyResolver {
+public final class DependencyResolver {
     private final Map<Class<?>, Supplier<?>> suppliers = new HashMap<>();
     private final Map<Class<?>, Object> instances = new HashMap<>();
 
@@ -42,7 +42,7 @@ public class DependencyResolver {
         return Holder.INSTANCE;
     }
 
-    private static class Holder {
+    private final static class Holder {
         private static final DependencyResolver INSTANCE = new DependencyResolver();
     }
 }

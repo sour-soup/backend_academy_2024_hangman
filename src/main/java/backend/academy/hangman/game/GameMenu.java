@@ -11,6 +11,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class GameMenu {
+    private static final String HANGMAN_ASCII_ART = """
+
+        ██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗
+        ██║  ██║██╔══██╗████╗  ██║██╔════╝ ████╗ ████║██╔══██╗████╗  ██║
+        ███████║███████║██╔██╗ ██║██║  ███╗██╔████╔██║███████║██╔██╗ ██║
+        ██╔══██║██╔══██║██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██║██║╚██╗██║
+        ██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║██║ ╚████║
+        ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+                                                                       \s
+        """;
     private final GameInputHandler gameInputHandler;
     private final GameOutputHandler gameOutputHandler;
     private final DictionaryService dictionaryService;
@@ -25,6 +35,7 @@ public class GameMenu {
 
     public Optional<GameParameters> run() {
         gameOutputHandler.clear();
+        gameOutputHandler.printMessage(HANGMAN_ASCII_ART);
 
         if (selectMainMenuOption() == 0) {
             return Optional.empty();
@@ -41,6 +52,7 @@ public class GameMenu {
     }
 
     private int selectMainMenuOption() {
+        gameOutputHandler.printMessage("Please select a main menu option: ");
         gameOutputHandler.printMessage("1) Start game");
         gameOutputHandler.printMessage("0) Exit game");
         return getNumberInRange(0, 1);

@@ -9,6 +9,17 @@ import java.util.Optional;
 import java.util.Set;
 
 public class GameSession {
+    private static final String WIN_ASCII_ART = """
+
+        ██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗██╗███╗   ██╗
+        ╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██║████╗  ██║
+         ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║██╔██╗ ██║
+          ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║██║╚██╗██║
+           ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝██║██║ ╚████║
+           ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝
+                                                             \s
+
+        """;
     private static final String ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
     private static final String HINT_COMMAND = "HINT";
     private static final String YES_RESPONSE = "yes";
@@ -87,6 +98,7 @@ public class GameSession {
     private void displayGameResult() {
         gameOutputHandler.clear();
         if (isWordGuessed()) {
+            gameOutputHandler.printMessage(WIN_ASCII_ART);
             gameOutputHandler.printMessage("Congratulations! You've won! The word was: %s".formatted(word.name()));
         } else {
             gameOutputHandler.printMessage("You've lost. The correct word was: %s".formatted(word.name()));

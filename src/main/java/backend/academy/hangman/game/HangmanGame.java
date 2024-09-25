@@ -18,18 +18,20 @@ public class HangmanGame {
     public void run() {
         while (true) {
             Optional<GameParameters> gameParametersOptional = gameMenu.run();
+
             if (gameParametersOptional.isEmpty()) {
                 gameOutputHandler.printMessage(EXITING_THE_GAME);
                 break;
             }
-            GameParameters gameParameters = gameParametersOptional.get();
+
+            GameParameters gameParameters = gameParametersOptional.orElseThrow();
             GameSession gameSession = new GameSession(gameParameters.word(), gameParameters.maxAttempts());
 
             GameStatus status = gameSession.run();
             if (status == GameStatus.EXIT) {
-                gameOutputHandler.printMessage(EXITING_THE_GAME);
                 break;
             }
         }
+        gameOutputHandler.printMessage(EXITING_THE_GAME);
     }
 }
