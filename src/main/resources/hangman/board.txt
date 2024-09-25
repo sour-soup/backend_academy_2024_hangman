@@ -19,13 +19,8 @@
     │###│             XX        XX
     │###│            XXX        XXX
     │###│           XXXX        XXXX
-    │###│          XXXXX        XXXXXX
-    │###│         XXXXXX        XXXXXXX
     │###│
 ┌───┘###└─────────────────┐
-│XXXXXXXXXXXXXXXXXXXXXXXXX│
-│XXXXXXXXXXXXXXXXXXXXXXXXX│
-│XXXXXXXXXXXXXXXXXXXXXXXXX│
 │XXXXXXXXXXXXXXXXXXXXXXXXX│
 │XXXXXXXXXXXXXXXXXXXXXXXXX│
 └─────────────────────────┘
