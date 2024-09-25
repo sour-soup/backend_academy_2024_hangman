@@ -101,8 +101,8 @@ public class GameSession {
             gameOutputHandler.printMessage(WIN_ASCII_ART);
             gameOutputHandler.printMessage("Congratulations! You've won! The word was: %s".formatted(word.name()));
         } else {
-            gameOutputHandler.printMessage("You've lost. The correct word was: %s".formatted(word.name()));
             gameOutputHandler.printMessage(board.getAsciiArt());
+            gameOutputHandler.printMessage("You've lost. The correct word was: %s".formatted(word.name()));
         }
     }
 
