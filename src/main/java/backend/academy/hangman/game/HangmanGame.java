@@ -23,8 +23,7 @@ public class HangmanGame {
                 break;
             }
 
-            GameParameters gameParameters = gameParametersOptional.orElseThrow();
-            GameSession gameSession = new GameSession(gameParameters.word(), gameParameters.maxAttempts());
+            GameSession gameSession = new GameSession(gameParametersOptional.orElseThrow());
 
             GameStatus status = gameSession.run();
             if (status == GameStatus.EXIT) {
