@@ -37,7 +37,7 @@ public class GameSession {
 
     public GameSession(GameParameters gameParameters) {
         this.word = gameParameters.word();
-        this.maxAttempts =gameParameters.maxAttempts();
+        this.maxAttempts = gameParameters.maxAttempts();
         currentAttempts = 0;
         usedLetters = new HashSet<>();
         board = new Board(maxAttempts);

@@ -94,10 +94,10 @@ public class GameMenu {
                 if (input != null && input >= minValue && input <= maxValue) {
                     return input;
                 }
-            } catch (GameInputException _) {
+            } catch (GameInputException ignored) {
             }
             gameOutputHandler.printMessage(
-                    "Please enter a valid number between %d and %d".formatted(minValue, maxValue));
+                "Please enter a valid number between %d and %d".formatted(minValue, maxValue));
         }
     }
 }
