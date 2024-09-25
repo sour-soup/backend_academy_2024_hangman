@@ -65,7 +65,8 @@ public class GameMenu {
         gameOutputHandler.printMessage("0) Random category");
 
         for (int i = 0; i < categories.size(); i++) {
-            gameOutputHandler.printMessage("%d) %s".formatted(i + 1, categories.get(i).name()));
+            Category category = categories.get(i);
+            gameOutputHandler.printMessage("%d) %s - %s".formatted(i + 1, category.name(), category.description()));
         }
 
         int categoryIndex = getNumberInRange(0, categories.size());
