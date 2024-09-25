@@ -24,41 +24,41 @@ public class DictionaryImpl implements Dictionary {
         words = new HashMap<>();
     }
 
+    public void loadDefaultDictionaryData() {
+        try (
+            InputStream defaultArtStream = getClass().getClassLoader()
+                .getResourceAsStream("hangman/dictionary.json")) {
+            loadDictionaryData(Objects.requireNonNull(defaultArtStream));
+        } catch (IOException e) {
+            throw new ResourceLoadingException(LOAD_ERROR_MESSAGE + e.getMessage(), e);
+        }
+    }
+
     public void loadDictionaryData(InputStream inputStream) {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
             DictionaryData data = objectMapper.readValue(inputStream, DictionaryData.class);
 
-            categories = data.categories().stream()
-                .collect(Collectors.toMap(Category::id, Function.identity()));
+            categories = data.categories().stream().collect(Collectors.toMap(Category::id, Function.identity()));
 
-            words = data.words().stream()
-                .map(wordData -> new Word(
-                    wordData.id(),
-                    wordData.name(),
-                    categories.get(wordData.categoryId()),
-                    wordData.hint()))
-                .collect(Collectors.toMap(Word::id, Function.identity()));
+            words = data.words().stream().map(
+                wordData -> new Word(wordData.id(), wordData.name(), categories.get(wordData.categoryId()),
+                    wordData.hint())).collect(Collectors.toMap(Word::id, Function.identity()));
         } catch (IOException e) {
             throw new ResourceLoadingException(LOAD_ERROR_MESSAGE + e.getMessage(), e);
         }
     }
 
-    @Override
-    public List<Category> getAllCategories() {
+    @Override public List<Category> getAllCategories() {
         return categories.values().stream().toList();
     }
 
-    @Override
-    public List<Word> getAllWords() {
+    @Override public List<Word> getAllWords() {
         return words.values().stream().toList();
     }
 
-    @Override
-    public List<Word> getWordsByCategory(Category category) {
-        return words.values().stream()
-            .filter(word -> Objects.equals(word.category().id(), category.id()))
-            .toList();
+    @Override public List<Word> getWordsByCategory(Category category) {
+        return words.values().stream().filter(word -> Objects.equals(word.category().id(), category.id())).toList();
     }
 }
