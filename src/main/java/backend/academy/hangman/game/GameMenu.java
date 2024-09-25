@@ -2,6 +2,7 @@ package backend.academy.hangman.game;
 
 import backend.academy.hangman.config.DependencyResolver;
 import backend.academy.hangman.config.GameConfig;
+import backend.academy.hangman.exception.GameInputException;
 import backend.academy.hangman.interaction.GameInputHandler;
 import backend.academy.hangman.interaction.GameOutputHandler;
 import backend.academy.hangman.model.Category;
@@ -88,12 +89,15 @@ public class GameMenu {
 
     int getNumberInRange(int minValue, int maxValue) {
         while (true) {
-            Integer input = gameInputHandler.getInteger();
-            if (input != null && input >= minValue && input <= maxValue) {
-                return input;
+            try {
+                Integer input = gameInputHandler.getInteger();
+                if (input != null && input >= minValue && input <= maxValue) {
+                    return input;
+                }
+            } catch (GameInputException _) {
             }
             gameOutputHandler.printMessage(
-                "Please enter a valid number between %d and %d".formatted(minValue, maxValue));
+                    "Please enter a valid number between %d and %d".formatted(minValue, maxValue));
         }
     }
 }
