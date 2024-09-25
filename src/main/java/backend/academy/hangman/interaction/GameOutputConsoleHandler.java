@@ -30,6 +30,6 @@ public class GameOutputConsoleHandler implements GameOutputHandler {
 
     @Override
     public void clear() {
-        printMessage("\n\n\n\n\n\n\n");
+        printMessage("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 }
