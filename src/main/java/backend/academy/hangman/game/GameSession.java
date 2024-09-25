@@ -20,11 +20,11 @@ public class GameSession {
                                                              \s
 
         """;
-    private static final String ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+    private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String HINT_COMMAND = "HINT";
     private static final String YES_RESPONSE = "yes";
     private static final String INVALID_INPUT_MESSAGE =
-        "Invalid input. Please enter a single valid letter from the Russian alphabet.";
+        "Invalid input. Please enter a single valid letter from the Latin alphabet.";
 
     private long currentAttempts;
     private final long maxAttempts;

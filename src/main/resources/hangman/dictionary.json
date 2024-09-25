@@ -2,180 +2,215 @@
     "categories": [
         {
             "id": 1,
-            "name": "Животные",
-            "description": "Различные виды животных"
+            "name": "Animals",
+            "description": "Various types of animals"
         },
         {
             "id": 2,
-            "name": "Фрукты",
-            "description": "Различные виды фруктов"
+            "name": "Fruits",
+            "description": "Various types of fruits"
         },
         {
             "id": 3,
-            "name": "Профессии",
-            "description": "Различные виды профессий"
+            "name": "Professions",
+            "description": "Various types of professions"
         },
         {
             "id": 4,
-            "name": "Спорт",
-            "description": "Различные виды спорта"
+            "name": "Sports",
+            "description": "Various types of sports"
         },
         {
             "id": 5,
-            "name": "Транспорт",
-            "description": "Различные виды транспорта"
+            "name": "Transportation",
+            "description": "Various means of transportation"
+        },
+        {
+            "id": 6,
+            "name": "IT",
+            "description": "Information Technology related terms"
         }
     ],
     "words": [
         {
             "id": 1,
-            "name": "Лев",
+            "name": "Lion",
             "categoryId": 1,
-            "hint": "Царь зверей"
+            "hint": "King of the jungle"
         },
         {
             "id": 2,
-            "name": "Жираф",
+            "name": "Giraffe",
             "categoryId": 1,
-            "hint": "Самое высокое животное"
+            "hint": "Tallest animal"
         },
         {
             "id": 3,
-            "name": "Слон",
+            "name": "Elephant",
             "categoryId": 1,
-            "hint": "Большое животное с хоботом"
+            "hint": "Large animal with a trunk"
         },
         {
             "id": 4,
-            "name": "Кенгуру",
+            "name": "Kangaroo",
             "categoryId": 1,
-            "hint": "Прыгает на задних лапах"
+            "hint": "Jumps on its hind legs"
         },
         {
             "id": 5,
-            "name": "Тигр",
+            "name": "Tiger",
             "categoryId": 1,
-            "hint": "Полосатый хищник"
+            "hint": "Striped predator"
         },
         {
             "id": 6,
-            "name": "Яблоко",
+            "name": "Apple",
             "categoryId": 2,
-            "hint": "Красный или зелёный фрукт"
+            "hint": "Red or green fruit"
         },
         {
             "id": 7,
-            "name": "Банан",
+            "name": "Banana",
             "categoryId": 2,
-            "hint": "Жёлтый фрукт, который любят обезьяны"
+            "hint": "Yellow fruit often liked by monkeys"
         },
         {
             "id": 8,
-            "name": "Апельсин",
+            "name": "Orange",
             "categoryId": 2,
-            "hint": "Цитрусовый фрукт оранжевого цвета"
+            "hint": "Citrus fruit, orange in color"
         },
         {
             "id": 9,
-            "name": "Груша",
+            "name": "Pear",
             "categoryId": 2,
-            "hint": "Фрукт с вытянутой формой"
+            "hint": "Fruit with a teardrop shape"
         },
         {
             "id": 10,
-            "name": "Виноград",
+            "name": "Grape",
             "categoryId": 2,
-            "hint": "Мелкие ягоды, растущие гроздью"
+            "hint": "Small berries that grow in clusters"
         },
         {
             "id": 11,
-            "name": "Доктор",
+            "name": "Doctor",
             "categoryId": 3,
-            "hint": "Лечит людей"
+            "hint": "Treats people"
         },
         {
             "id": 12,
-            "name": "Повар",
+            "name": "Chef",
             "categoryId": 3,
-            "hint": "Готовит еду"
+            "hint": "Prepares food"
         },
         {
             "id": 13,
-            "name": "Учитель",
+            "name": "Teacher",
             "categoryId": 3,
-            "hint": "Обучает детей в школе"
+            "hint": "Educates children"
         },
         {
             "id": 14,
-            "name": "Строитель",
+            "name": "Builder",
             "categoryId": 3,
-            "hint": "Строит здания"
+            "hint": "Constructs buildings"
         },
         {
             "id": 15,
-            "name": "Пилот",
+            "name": "Pilot",
             "categoryId": 3,
-            "hint": "Управляет самолётом"
+            "hint": "Flies an airplane"
         },
         {
             "id": 16,
-            "name": "Футбол",
+            "name": "Soccer",
             "categoryId": 4,
-            "hint": "Играют с мячом ногами"
+            "hint": "Played with a ball using feet"
         },
         {
             "id": 17,
-            "name": "Баскетбол",
+            "name": "Basketball",
             "categoryId": 4,
-            "hint": "Играют с мячом и кольцом"
+            "hint": "Played with a ball and a hoop"
         },
         {
             "id": 18,
-            "name": "Теннис",
+            "name": "Tennis",
             "categoryId": 4,
-            "hint": "Играют ракетками"
+            "hint": "Played with rackets"
         },
         {
             "id": 19,
-            "name": "Хоккей",
+            "name": "Hockey",
             "categoryId": 4,
-            "hint": "Играют на льду с шайбой"
+            "hint": "Played on ice with a puck"
         },
         {
             "id": 20,
-            "name": "Волейбол",
+            "name": "Volleyball",
             "categoryId": 4,
-            "hint": "Играют с мячом через сетку"
+            "hint": "Played with a ball over a net"
         },
         {
             "id": 21,
-            "name": "Автобус",
+            "name": "Bus",
             "categoryId": 5,
-            "hint": "Большое транспортное средство для перевозки пассажиров"
+            "hint": "Large vehicle for transporting passengers"
         },
         {
             "id": 22,
-            "name": "Поезд",
+            "name": "Train",
             "categoryId": 5,
-            "hint": "Едет по рельсам"
+            "hint": "Travels on rails"
         },
         {
             "id": 23,
-            "name": "Самолёт",
+            "name": "Airplane",
             "categoryId": 5,
-            "hint": "Летит по небу"
+            "hint": "Flies in the sky"
         },
         {
             "id": 24,
-            "name": "Корабль",
+            "name": "Ship",
             "categoryId": 5,
-            "hint": "Плавает по воде"
+            "hint": "Sails on water"
         },
         {
             "id": 25,
-            "name": "Велосипед",
+            "name": "Bicycle",
             "categoryId": 5,
-            "hint": "Транспорт с двумя колесами"
+            "hint": "Two-wheeled transport"
+        },
+        {
+            "id": 26,
+            "name": "Algorithm",
+            "categoryId": 6,
+            "hint": "Step-by-step problem-solving process"
+        },
+        {
+            "id": 27,
+            "name": "Compiler",
+            "categoryId": 6,
+            "hint": "Converts code into machine language"
+        },
+        {
+            "id": 28,
+            "name": "Database",
+            "categoryId": 6,
+            "hint": "Stores structured information"
+        },
+        {
+            "id": 29,
+            "name": "Encryption",
+            "categoryId": 6,
+            "hint": "Secures data by converting it into code"
+        },
+        {
+            "id": 30,
+            "name": "Firewall",
+            "categoryId": 6,
+            "hint": "Protects networks from unauthorized access"
         }
     ]
 }
