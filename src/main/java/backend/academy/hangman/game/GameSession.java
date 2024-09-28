@@ -1,9 +1,11 @@
 package backend.academy.hangman.game;
 
 import backend.academy.hangman.config.DependencyResolver;
+import backend.academy.hangman.exception.InvalidGameParameterException;
 import backend.academy.hangman.interaction.GameInputHandler;
 import backend.academy.hangman.interaction.GameOutputHandler;
 import backend.academy.hangman.model.Word;
+import com.google.common.base.Strings;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -47,6 +49,7 @@ public class GameSession {
     }
 
     public GameStatus run() {
+        validateParameters();
         if (isGameActive()) {
             do {
                 displayGameState();
@@ -56,6 +59,15 @@ public class GameSession {
         }
         displayGameResult();
         return (askToPlayAgain() ? GameStatus.RESTART : GameStatus.EXIT);
+    }
+
+    private void validateParameters() {
+        if (word == null || Strings.isNullOrEmpty(word.name())) {
+            throw new InvalidGameParameterException("Word cannot be null or empty.");
+        }
+        if (maxAttempts <= 0) {
+            throw new InvalidGameParameterException("Max attempts must be greater than 0.");
+        }
     }
 
     private void displayGameState() {
