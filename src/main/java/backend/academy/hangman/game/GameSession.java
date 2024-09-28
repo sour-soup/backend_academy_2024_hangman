@@ -106,7 +106,7 @@ public class GameSession {
         }
     }
 
-    public boolean askToPlayAgain() {
+    private boolean askToPlayAgain() {
         gameOutputHandler.printMessage("Do you want to play again? (yes/no)");
         String input = gameInputHandler.getString();
         return YES_RESPONSE.equalsIgnoreCase(input);
