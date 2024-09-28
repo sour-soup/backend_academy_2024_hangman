@@ -88,7 +88,7 @@ public class GameMenu {
         return (attempts == 0 ? gameConfig.maxAttempts() : attempts);
     }
 
-    int getNumberInRange(int minValue, int maxValue) {
+    private int getNumberInRange(int minValue, int maxValue) {
         while (true) {
             try {
                 Integer input = gameInputHandler.getInteger();
