@@ -10,6 +10,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -46,6 +47,7 @@ class HangmanGameSessionTest {
 
     @ParameterizedTest
     @NullAndEmptySource
+    @DisplayName("Should throw exception when word is empty or null")
     void run_ShouldThrowException_WhenWordIsEmptyOrNull(String wordName) {
         // Arrange
         Word word = Instancio.of(Word.class)
@@ -64,6 +66,7 @@ class HangmanGameSessionTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-10, -1, 0})
+    @DisplayName("Should throw exception when max attempts is not positive")
     void run_ShouldThrowException_WhenMaxAttemptsIsNotPositive(int maxAttempts) {
         // Arrange
         GameParameters gameParameters = Instancio.of(GameParameters.class)
@@ -78,6 +81,7 @@ class HangmanGameSessionTest {
     }
 
     @Test
+    @DisplayName("Should output 'won' when word is guessed")
     void run_ShouldOutputWon_WhenWordIsGuessed() {
         // Arrange
         Word word = Instancio.of(Word.class)
@@ -96,6 +100,7 @@ class HangmanGameSessionTest {
     }
 
     @Test
+    @DisplayName("Should output 'lost' when word is not guessed")
     void run_ShouldOutputLost_WhenWordIsNotGuessed() {
         // Arrange
         Word word = Instancio.of(Word.class)
@@ -114,6 +119,7 @@ class HangmanGameSessionTest {
     }
 
     @Test
+    @DisplayName("Should return EXIT when player chooses not to restart")
     void run_ShouldReturnExit_WhenPlayerChoosesNotToRestart() {
         // Arrange
         Word word = Instancio.of(Word.class)
@@ -132,6 +138,7 @@ class HangmanGameSessionTest {
     }
 
     @Test
+    @DisplayName("Should return RESTART when player chooses to restart")
     void run_ShouldReturnRestart_WhenPlayerChoosesToRestart() {
         // Arrange
         Word word = Instancio.of(Word.class)

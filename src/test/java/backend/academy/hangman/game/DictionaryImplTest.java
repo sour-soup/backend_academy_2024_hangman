@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -28,6 +29,7 @@ class DictionaryImplTest {
     }
 
     @Test
+    @DisplayName("Should load dictionary data correctly")
     void loadDictionaryData_ShouldLoadDictionaryDataCorrectly() {
         // Act
         dictionary.loadDictionaryData(getExampleInputStream());
@@ -41,6 +43,7 @@ class DictionaryImplTest {
     }
 
     @Test
+    @DisplayName("Should throw exception when JSON is invalid")
     void loadDictionaryData_ShouldThrowException_WhenJsonIsInvalid() {
         // Arrange
         String invalidJsonData = "baobab";
@@ -52,6 +55,7 @@ class DictionaryImplTest {
     }
 
     @Test
+    @DisplayName("Should throw exception when input stream is null")
     void loadDictionaryData_ShouldThrowException_WhenInputStreamIsNull() {
         // Arrange (Given)
         InputStream inputStream = InputStream.nullInputStream();
@@ -62,6 +66,7 @@ class DictionaryImplTest {
     }
 
     @Test
+    @DisplayName("Should return all categories")
     void getAllCategories() {
         // Act
         List<Category> actualCategories = dictionary.getAllCategories();
@@ -71,6 +76,7 @@ class DictionaryImplTest {
     }
 
     @Test
+    @DisplayName("Should return a random word")
     void getRandomWord() {
         // Act
         Word actualWord = dictionary.getRandomWord();
@@ -80,6 +86,7 @@ class DictionaryImplTest {
     }
 
     @Test
+    @DisplayName("Should return a random word by category")
     void getRandomWordByCategory() {
         // Act
         Category category = dictionary.getAllCategories().getFirst();

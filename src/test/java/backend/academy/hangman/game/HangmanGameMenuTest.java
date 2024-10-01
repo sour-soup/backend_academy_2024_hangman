@@ -10,6 +10,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -47,6 +48,7 @@ class HangmanGameMenuTest {
     }
 
     @Test
+    @DisplayName("Should return empty optional when player chooses to exit")
     void run_ShouldReturnEmptyOptional_WhenPlayerChoosesExit() {
         // Arrange
         HangmanGameMenu gameMenu = new HangmanGameMenu();
@@ -61,6 +63,7 @@ class HangmanGameMenuTest {
     }
 
     @Test
+    @DisplayName("Should return default max attempts when player chooses default game")
     void run_ShouldReturnDefaultMaxAttempts_WhenPlayerChoosesDefaultGame() {
         // Arrange
         HangmanGameMenu gameMenu = new HangmanGameMenu();
@@ -80,6 +83,7 @@ class HangmanGameMenuTest {
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 100})
+    @DisplayName("Should return chosen max attempts based on user input")
     void run_ShouldReturnChosenMaxAttempts(long expectedMaxAttempts) {
         // Arrange
         HangmanGameMenu gameMenu = new HangmanGameMenu();
