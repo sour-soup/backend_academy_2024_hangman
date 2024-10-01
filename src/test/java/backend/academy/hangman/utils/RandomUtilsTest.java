@@ -1,6 +1,7 @@
 package backend.academy.hangman.utils;
 
 import backend.academy.hangman.exception.InvalidCollectionRequestException;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 class RandomUtilsTest {
 
     @Test
+    @DisplayName("Should return an element when collection has elements")
     void getRandomElement_ShouldReturnElement_WhenCollectionHasElements() {
         // Arrange
         List<String> elements = List.of("apple", "banana", "cherry");
@@ -22,6 +24,7 @@ class RandomUtilsTest {
     }
 
     @Test
+    @DisplayName("Should throw InvalidCollectionRequestException when collection is empty")
     void getRandomElement_ShouldThrowEmptyCollectionException_WhenCollectionIsEmpty() {
         // Arrange
         List<String> emptyList = List.of();
@@ -32,9 +35,10 @@ class RandomUtilsTest {
     }
 
     @Test
-    void getRandomElements_ReturnsCorrectList(){
+    @DisplayName("Returns a list of random elements when n is less than collection size")
+    void getRandomElements_ReturnsCorrectList() {
         // Arrange
-        List<Integer> collection = List.of(1,2,3,4,5);
+        List<Integer> collection = List.of(1, 2, 3, 4, 5);
         int n = 3;
 
         // Act
@@ -46,9 +50,10 @@ class RandomUtilsTest {
     }
 
     @Test
-    void getRandomElements_ReturnsAllElements_WhenNEqualsCollectionSize(){
+    @DisplayName("Returns all elements when n equals collection size")
+    void getRandomElements_ReturnsAllElements_WhenNEqualsCollectionSize() {
         // Arrange
-        List<Integer> collection = List.of(1,2,3,4,5);
+        List<Integer> collection = List.of(1, 2, 3, 4, 5);
         int n = collection.size();
 
         // Act
@@ -59,9 +64,10 @@ class RandomUtilsTest {
     }
 
     @Test
-    void getRandomElements_ReturnsEmptyList_WhenNIsZero(){
+    @DisplayName("Returns empty list when n is zero")
+    void getRandomElements_ReturnsEmptyList_WhenNIsZero() {
         // Arrange
-        List<Integer> collection = List.of(1,2,3,4,5);
+        List<Integer> collection = List.of(1, 2, 3, 4, 5);
         int n = 0;
 
         // Act
@@ -72,7 +78,8 @@ class RandomUtilsTest {
     }
 
     @Test
-    void getRandomElements_ReturnsEmptyList_WhenCollectionIsEmptyAndNIsZero(){
+    @DisplayName("Returns empty list when collection is empty and n is zero")
+    void getRandomElements_ReturnsEmptyList_WhenCollectionIsEmptyAndNIsZero() {
         // Arrange
         List<Integer> collection = List.of();
         int n = 0;
@@ -85,8 +92,9 @@ class RandomUtilsTest {
     }
 
     @Test
-    void getRandomElements_ThrowsException_WhenNIsNegative(){
-        List<Integer> collection = List.of(1,2,3,4,5);
+    @DisplayName("Throws exception when n is negative")
+    void getRandomElements_ThrowsException_WhenNIsNegative() {
+        List<Integer> collection = List.of(1, 2, 3, 4, 5);
         int n = -1;
 
         // Act & Assert
@@ -96,8 +104,9 @@ class RandomUtilsTest {
     }
 
     @Test
-    void getRandomElements_ThrowsException_WhenNExceedsCollectionSize(){
-        List<Integer> collection = List.of(1,2,3,4,5);
+    @DisplayName("Throws exception when n exceeds collection size")
+    void getRandomElements_ThrowsException_WhenNExceedsCollectionSize() {
+        List<Integer> collection = List.of(1, 2, 3, 4, 5);
         int n = collection.size() + 1;
 
         // Act & Assert
