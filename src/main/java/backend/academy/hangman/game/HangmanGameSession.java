@@ -119,7 +119,7 @@ public class HangmanGameSession implements GameSession {
     }
 
     private boolean askToPlayAgain() {
-        gameOutputHandler.printMessage("Do you want to play again? (yes/no)");
+        gameOutputHandler.printMessage("Do you want to play again? (Enter 'yes' if you want it.)");
         String input = gameInputHandler.getString();
         return YES_RESPONSE.equalsIgnoreCase(input);
     }
