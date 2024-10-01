@@ -2,6 +2,7 @@ package backend.academy.hangman;
 
 import backend.academy.hangman.config.DependencyResolver;
 import backend.academy.hangman.config.GameConfig;
+import backend.academy.hangman.game.Game;
 import backend.academy.hangman.game.HangmanGame;
 import backend.academy.hangman.interaction.GameInputConsoleHandler;
 import backend.academy.hangman.interaction.GameInputHandler;
@@ -20,8 +21,8 @@ import org.aeonbits.owner.ConfigFactory;
 public class Main {
     public static void main(String[] args) {
         registerDependencies();
-        HangmanGame hangmanGame = new HangmanGame();
-        hangmanGame.run();
+        Game hangmanGame = new HangmanGame();
+        hangmanGame.start();
     }
 
     private static void registerDependencies() {

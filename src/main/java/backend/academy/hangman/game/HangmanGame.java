@@ -4,7 +4,7 @@ import backend.academy.hangman.config.DependencyResolver;
 import backend.academy.hangman.interaction.GameOutputHandler;
 import java.util.Optional;
 
-public class HangmanGame {
+public class HangmanGame implements Game {
     private static final String EXITING_THE_GAME = "Exiting the game. Goodbye!";
 
     private final GameMenu gameMenu;
@@ -15,7 +15,7 @@ public class HangmanGame {
         gameOutputHandler = DependencyResolver.getInstance().resolve(GameOutputHandler.class);
     }
 
-    public void run() {
+    public void start() {
         while (true) {
             Optional<GameParameters> gameParametersOptional = gameMenu.run();
 
