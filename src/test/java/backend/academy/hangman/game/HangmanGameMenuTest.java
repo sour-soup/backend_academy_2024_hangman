@@ -18,7 +18,7 @@ import org.mockito.Mockito;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class GameMenuTest {
+class HangmanGameMenuTest {
     GameInputHandler mockGameInputHandler;
     GameOutputHandler mockGameOutputHandler;
     DictionaryService mockDictionaryService;
@@ -50,7 +50,7 @@ class GameMenuTest {
     @Test
     void run_ShouldReturnEmptyOptional_WhenPlayerChoosesExit() {
         // Arrange
-        GameMenu gameMenu = new GameMenu();
+        HangmanGameMenu gameMenu = new HangmanGameMenu();
 
         Mockito.when(mockGameInputHandler.getString()).thenReturn("0");
 
@@ -64,7 +64,7 @@ class GameMenuTest {
     @Test
     void run_ShouldReturnDefaultMaxAttempts_WhenPlayerChoosesDefaultGame() {
         // Arrange
-        GameMenu gameMenu = new GameMenu();
+        HangmanGameMenu gameMenu = new HangmanGameMenu();
         long expectedMaxAttempts = DependencyResolver.getInstance()
             .resolve(GameConfig.class).maxAttempts();
 
@@ -83,7 +83,7 @@ class GameMenuTest {
     @ValueSource(longs = {1, 2, 100})
     void run_ShouldReturnChosenMaxAttempts(long expectedMaxAttempts) {
         // Arrange
-        GameMenu gameMenu = new GameMenu();
+        HangmanGameMenu gameMenu = new HangmanGameMenu();
 
         Mockito.when(mockGameInputHandler.getInteger())
             .thenReturn(1, 0, (int) expectedMaxAttempts);

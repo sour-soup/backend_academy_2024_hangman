@@ -11,7 +11,7 @@ public class HangmanGame implements Game {
     private final GameOutputHandler gameOutputHandler;
 
     public HangmanGame() {
-        gameMenu = new GameMenu();
+        gameMenu = new HangmanGameMenu();
         gameOutputHandler = DependencyResolver.getInstance().resolve(GameOutputHandler.class);
     }
 
@@ -23,7 +23,7 @@ public class HangmanGame implements Game {
                 break;
             }
 
-            GameSession gameSession = new GameSession(gameParametersOptional.orElseThrow());
+            GameSession gameSession = new HangmanGameSession(gameParametersOptional.orElseThrow());
 
             GameStatus status = gameSession.run();
             if (status == GameStatus.EXIT) {

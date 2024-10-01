@@ -19,7 +19,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.instancio.Select.field;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GameSessionTest {
+class HangmanGameSessionTest {
     GameInputHandler mockGameInputHandler;
     GameOutputHandler mockGameOutputHandler;
 
@@ -50,7 +50,7 @@ class GameSessionTest {
         GameParameters gameParameters = Instancio.of(GameParameters.class)
             .set(field(GameParameters::word), word)
             .create();
-        GameSession gameSession = new GameSession(gameParameters);
+        HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
         // Act & Assert
         assertThatThrownBy(gameSession::run)
@@ -65,7 +65,7 @@ class GameSessionTest {
         GameParameters gameParameters = Instancio.of(GameParameters.class)
             .set(field(GameParameters::maxAttempts), maxAttempts)
             .create();
-        GameSession gameSession = new GameSession(gameParameters);
+        HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
         // Act & Assert
         assertThatThrownBy(gameSession::run)
@@ -80,7 +80,7 @@ class GameSessionTest {
             .set(field(Word::name), "A")
             .create();
         GameParameters gameParameters = new GameParameters(word, 1);
-        GameSession gameSession = new GameSession(gameParameters);
+        HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
         Mockito.when(mockGameInputHandler.getString())
             .thenReturn("A", "no");
@@ -98,7 +98,7 @@ class GameSessionTest {
             .set(field(Word::name), "A")
             .create();
         GameParameters gameParameters = new GameParameters(word, 1);
-        GameSession gameSession = new GameSession(gameParameters);
+        HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
         Mockito.when(mockGameInputHandler.getString())
             .thenReturn("B", "no");
@@ -116,7 +116,7 @@ class GameSessionTest {
             .set(field(Word::name), "A")
             .create();
         GameParameters gameParameters = new GameParameters(word, 1);
-        GameSession gameSession = new GameSession(gameParameters);
+        HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
         Mockito.when(mockGameInputHandler.getString()).thenReturn("A", "no");
 
@@ -134,7 +134,7 @@ class GameSessionTest {
             .set(field(Word::name), "A")
             .create();
         GameParameters gameParameters = new GameParameters(word, 1);
-        GameSession gameSession = new GameSession(gameParameters);
+        HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
         Mockito.when(mockGameInputHandler.getString()).thenReturn("A", "yes");
 
