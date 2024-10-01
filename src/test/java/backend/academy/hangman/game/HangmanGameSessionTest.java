@@ -15,9 +15,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
+import static backend.academy.hangman.game.GameStatus.EXIT;
+import static backend.academy.hangman.game.GameStatus.RESTART;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.instancio.Select.field;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 class HangmanGameSessionTest {
     GameInputHandler mockGameInputHandler;
@@ -82,13 +86,13 @@ class HangmanGameSessionTest {
         GameParameters gameParameters = new GameParameters(word, 1);
         HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
-        Mockito.when(mockGameInputHandler.getString())
+        when(mockGameInputHandler.getString())
             .thenReturn("A", "no");
 
         // Act
         gameSession.run();
 
-        Mockito.verify(mockGameOutputHandler).printMessage(Mockito.contains("You've won"));
+        verify(mockGameOutputHandler).printMessage(Mockito.contains("You've won"));
     }
 
     @Test
@@ -100,13 +104,13 @@ class HangmanGameSessionTest {
         GameParameters gameParameters = new GameParameters(word, 1);
         HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
-        Mockito.when(mockGameInputHandler.getString())
+        when(mockGameInputHandler.getString())
             .thenReturn("B", "no");
 
         // Act
         gameSession.run();
 
-        Mockito.verify(mockGameOutputHandler).printMessage(Mockito.contains("You've lost"));
+        verify(mockGameOutputHandler).printMessage(Mockito.contains("You've lost"));
     }
 
     @Test
@@ -118,13 +122,13 @@ class HangmanGameSessionTest {
         GameParameters gameParameters = new GameParameters(word, 1);
         HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
-        Mockito.when(mockGameInputHandler.getString()).thenReturn("A", "no");
+        when(mockGameInputHandler.getString()).thenReturn("A", "no");
 
         // Act
         GameStatus result = gameSession.run();
 
         // Assert
-        assertEquals(GameStatus.EXIT, result);
+        assertThat(result).isEqualTo(EXIT);
     }
 
     @Test
@@ -136,13 +140,13 @@ class HangmanGameSessionTest {
         GameParameters gameParameters = new GameParameters(word, 1);
         HangmanGameSession gameSession = new HangmanGameSession(gameParameters);
 
-        Mockito.when(mockGameInputHandler.getString()).thenReturn("A", "yes");
+        when(mockGameInputHandler.getString()).thenReturn("A", "yes");
 
         // Act
         GameStatus result = gameSession.run();
 
         // Assert
-        assertEquals(GameStatus.RESTART, result);
+        assertThat(result).isEqualTo(RESTART);
     }
 
 }
