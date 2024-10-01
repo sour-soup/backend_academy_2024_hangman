@@ -42,7 +42,7 @@ public class GameSession {
         this.maxAttempts = gameParameters.maxAttempts();
         currentAttempts = 0;
         usedLetters = new HashSet<>();
-        board = new Board(maxAttempts);
+        board = new HangmanBoard(maxAttempts);
         board.loadDefaultAsciiArt();
         gameInputHandler = DependencyResolver.getInstance().resolve(GameInputHandler.class);
         gameOutputHandler = DependencyResolver.getInstance().resolve(GameOutputHandler.class);

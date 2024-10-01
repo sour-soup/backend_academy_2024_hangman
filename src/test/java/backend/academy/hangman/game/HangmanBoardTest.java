@@ -14,8 +14,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class BoardTest {
-    private Board board;
+class HangmanBoardTest {
+    private HangmanBoard board;
 
     @BeforeEach
     void setUp() {
@@ -24,7 +24,7 @@ class BoardTest {
         DependencyResolver.getInstance()
             .register(GameConfig.class, () -> ConfigFactory.create(GameConfig.class));
 
-        board = new Board(1);
+        board = new HangmanBoard(1);
     }
 
     @Test
