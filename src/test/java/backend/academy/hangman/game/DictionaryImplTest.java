@@ -1,15 +1,15 @@
-package backend.academy.hangman.repository;
+package backend.academy.hangman.game;
 
 import backend.academy.hangman.exception.ResourceLoadingException;
 import backend.academy.hangman.model.Category;
 import backend.academy.hangman.model.Word;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
@@ -17,22 +17,27 @@ class DictionaryImplTest {
     private DictionaryImpl dictionary;
 
     @BeforeEach
-    void setUp() throws ResourceLoadingException {
+    void setUp() {
         dictionary = new DictionaryImpl();
         dictionary.loadDictionaryData(getExampleInputStream());
     }
 
+    @AfterEach
+    void tearDown() {
+        dictionary = null;
+    }
+
     @Test
-    void loadDictionaryData_ShouldLoadDictionaryDataCorrectly() throws ResourceLoadingException {
+    void loadDictionaryData_ShouldLoadDictionaryDataCorrectly() {
         // Act
         dictionary.loadDictionaryData(getExampleInputStream());
 
         // Assert
         List<Category> actualCategories = dictionary.getAllCategories();
-        List<Word> actualWords = dictionary.getAllWords();
+        Word actualWord = dictionary.getRandomWord();
 
         assertThat(actualCategories).isEqualTo(getExampleCategories());
-        assertThat(actualWords).isEqualTo(getExampleWords());
+        assertThat(getExampleWords()).contains(actualWord);
     }
 
     @Test
@@ -66,26 +71,26 @@ class DictionaryImplTest {
     }
 
     @Test
-    void getAllWords() {
+    void getRandomWord() {
         // Act
-        List<Word> actualWords = dictionary.getAllWords();
+        Word actualWord = dictionary.getRandomWord();
 
         // Assert
-        assertThat(actualWords).containsExactlyInAnyOrderElementsOf(getExampleWords());
+        assertThat(getExampleWords()).contains(actualWord);
     }
 
     @Test
-    void getWordsByCategory() {
+    void getRandomWordByCategory() {
         // Act
         Category category = dictionary.getAllCategories().getFirst();
-        List<Word> actualWords = dictionary.getWordsByCategory(category);
+        Word actualWord = dictionary.getRandomWordByCategory(category);
 
         List<Word> expectedWords = getExampleWords().stream()
             .filter(word -> Objects.equals(word.category().id(), category.id()))
             .toList();
 
         // Assert
-        assertThat(actualWords).isEqualTo(expectedWords);
+        assertThat(expectedWords).containsExactly(actualWord);
     }
 
     private static InputStream getExampleInputStream() {

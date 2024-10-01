@@ -5,7 +5,6 @@ import backend.academy.hangman.config.GameConfig;
 import backend.academy.hangman.interaction.GameInputHandler;
 import backend.academy.hangman.interaction.GameOutputHandler;
 import backend.academy.hangman.model.Word;
-import backend.academy.hangman.service.DictionaryService;
 import java.util.Optional;
 import org.aeonbits.owner.ConfigFactory;
 import org.instancio.Instancio;
@@ -21,24 +20,24 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 class HangmanGameMenuTest {
     GameInputHandler mockGameInputHandler;
     GameOutputHandler mockGameOutputHandler;
-    DictionaryService mockDictionaryService;
+    Dictionary mockDictionary;
 
     @BeforeEach
     void setUp() {
         mockGameInputHandler = Mockito.mock(GameInputHandler.class);
         mockGameOutputHandler = Mockito.mock(GameOutputHandler.class);
-        mockDictionaryService = Mockito.mock(DictionaryService.class);
+        mockDictionary = Mockito.mock(Dictionary.class);
 
         DependencyResolver.getInstance()
             .register(GameInputHandler.class, () -> mockGameInputHandler);
         DependencyResolver.getInstance()
             .register(GameOutputHandler.class, () -> mockGameOutputHandler);
         DependencyResolver.getInstance()
-            .register(DictionaryService.class, () -> mockDictionaryService);
+            .register(Dictionary.class, () -> mockDictionary);
         DependencyResolver.getInstance()
             .register(GameConfig.class, () -> ConfigFactory.create(GameConfig.class));
 
-        Mockito.when(mockDictionaryService.getRandomWord())
+        Mockito.when(mockDictionary.getRandomWord())
             .thenReturn(Instancio.create(Word.class));
     }
 

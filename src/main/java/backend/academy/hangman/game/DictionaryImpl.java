@@ -1,8 +1,10 @@
-package backend.academy.hangman.repository;
+package backend.academy.hangman.game;
 
 import backend.academy.hangman.exception.ResourceLoadingException;
 import backend.academy.hangman.model.Category;
+import backend.academy.hangman.model.DictionaryData;
 import backend.academy.hangman.model.Word;
+import backend.academy.hangman.utils.RandomUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,15 +52,22 @@ public class DictionaryImpl implements Dictionary {
         }
     }
 
-    @Override public List<Category> getAllCategories() {
+    @Override
+    public List<Category> getAllCategories() {
         return categories.values().stream().toList();
     }
 
-    @Override public List<Word> getAllWords() {
-        return words.values().stream().toList();
+    @Override
+    public Word getRandomWord() {
+        List<Word> wordsList = words.values().stream().toList();
+        return RandomUtils.getRandomElement(wordsList);
     }
 
-    @Override public List<Word> getWordsByCategory(Category category) {
-        return words.values().stream().filter(word -> Objects.equals(word.category().id(), category.id())).toList();
+    @Override
+    public Word getRandomWordByCategory(Category category) {
+        List<Word> wordList = words.values().stream()
+            .filter(word -> Objects.equals(word.category().id(), category.id()))
+            .toList();
+        return RandomUtils.getRandomElement(wordList);
     }
 }

@@ -1,6 +1,5 @@
-package backend.academy.hangman.repository;
+package backend.academy.hangman.model;
 
-import backend.academy.hangman.model.Category;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -7,7 +7,6 @@ import backend.academy.hangman.interaction.GameInputHandler;
 import backend.academy.hangman.interaction.GameOutputHandler;
 import backend.academy.hangman.model.Category;
 import backend.academy.hangman.model.Word;
-import backend.academy.hangman.service.DictionaryService;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,13 +23,13 @@ public class HangmanGameMenu implements GameMenu {
         """;
     private final GameInputHandler gameInputHandler;
     private final GameOutputHandler gameOutputHandler;
-    private final DictionaryService dictionaryService;
+    private final Dictionary dictionary;
     private final GameConfig gameConfig;
 
     public HangmanGameMenu() {
         this.gameInputHandler = DependencyResolver.getInstance().resolve(GameInputHandler.class);
         this.gameOutputHandler = DependencyResolver.getInstance().resolve(GameOutputHandler.class);
-        this.dictionaryService = DependencyResolver.getInstance().resolve(DictionaryService.class);
+        this.dictionary = DependencyResolver.getInstance().resolve(Dictionary.class);
         this.gameConfig = DependencyResolver.getInstance().resolve(GameConfig.class);
     }
 
@@ -44,8 +43,8 @@ public class HangmanGameMenu implements GameMenu {
 
         Optional<Category> selectedCategory = selectCategory();
 
-        Word word = (selectedCategory.map(dictionaryService::getRandomWordByCategory)
-            .orElseGet(dictionaryService::getRandomWord));
+        Word word = (selectedCategory.map(dictionary::getRandomWordByCategory)
+            .orElseGet(dictionary::getRandomWord));
 
         int attempts = selectAttempts();
 
@@ -60,7 +59,7 @@ public class HangmanGameMenu implements GameMenu {
     }
 
     private Optional<Category> selectCategory() {
-        List<Category> categories = dictionaryService.getAllCategories();
+        List<Category> categories = dictionary.getAllCategories();
         gameOutputHandler.printMessage("Select a category:");
         gameOutputHandler.printMessage("0) Random category");
 
