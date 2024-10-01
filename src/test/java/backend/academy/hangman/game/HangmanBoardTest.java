@@ -7,6 +7,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -25,6 +26,11 @@ class HangmanBoardTest {
             .register(GameConfig.class, () -> ConfigFactory.create(GameConfig.class));
 
         board = new HangmanBoard(1);
+    }
+
+    @AfterEach
+    void tearDown() {
+        DependencyResolver.getInstance().clear();
     }
 
     @Test
