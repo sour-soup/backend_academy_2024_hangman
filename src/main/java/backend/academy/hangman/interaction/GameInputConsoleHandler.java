@@ -20,7 +20,11 @@ public class GameInputConsoleHandler implements GameInputHandler {
     @Override
     public String getString() {
         try {
-            return bufferedReader.readLine();
+            String input = bufferedReader.readLine();
+            if (input == null) {
+                throw new RuntimeException("No input received");
+            }
+            return input;
         } catch (IOException e) {
             throw new GameInputException("Error reading string input", e);
         }

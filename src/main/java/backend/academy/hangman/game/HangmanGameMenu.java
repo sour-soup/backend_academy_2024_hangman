@@ -92,10 +92,9 @@ public class HangmanGameMenu implements GameMenu {
         while (true) {
             try {
                 Integer input = gameInputHandler.getInteger();
-                if (input != null && input >= minValue && input <= maxValue) {
+                if (input >= minValue && input <= maxValue) {
                     return input;
-                }
-                else {
+                } else {
                     gameOutputHandler.printMessage(
                         "Please enter a valid number between %d and %d".formatted(minValue, maxValue));
                 }
