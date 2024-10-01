@@ -95,10 +95,13 @@ public class HangmanGameMenu implements GameMenu {
                 if (input != null && input >= minValue && input <= maxValue) {
                     return input;
                 }
-            } catch (GameInputException ignored) {
+                else {
+                    gameOutputHandler.printMessage(
+                        "Please enter a valid number between %d and %d".formatted(minValue, maxValue));
+                }
+            } catch (GameInputException e) {
+                gameOutputHandler.printMessage("Please enter a valid number: %s".formatted(e.getMessage()));
             }
-            gameOutputHandler.printMessage(
-                "Please enter a valid number between %d and %d".formatted(minValue, maxValue));
         }
     }
 }
